@@ -23,7 +23,9 @@ type PartialEnhancedVKBridgeSend =
   <K extends AnyRequestMethodName>(method: K, props?: RequestProps<K> & RequestIdProp | {}) =>
     Promise<K extends AnyReceiveMethodName ? Partial<EnhancedReceiveData<K>> : never>;
 
-export interface EnhancedVKBridge extends Omit<VKBridge, 'send' | 'sendPromise'> {
+type DeprecatedVKBridgeMethods = 'send' | 'sendPromise' | 'isIframe' | 'isEmbedded' | 'isStandalone';
+
+export interface EnhancedVKBridge extends Omit<VKBridge, DeprecatedVKBridgeMethods> {
   /**
   * Sends an event to the runtime env and returns the Promise object with
   * response data. In the case of Android/iOS application env is the

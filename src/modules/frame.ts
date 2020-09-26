@@ -1,7 +1,5 @@
-import raf from 'raf';
-
-const nextFrame = raf as typeof requestAnimationFrame;
-const cancelFrame = raf.cancel as typeof cancelAnimationFrame;
+const nextFrame = window.requestAnimationFrame.bind(window);
+const cancelFrame = window.cancelAnimationFrame.bind(window);
 
 export {
   nextFrame,
